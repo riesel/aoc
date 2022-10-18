@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "kakumei.ts-debug",
+    "steoates.autoimport",
+    "dbaeumer.vscode-eslint",
+    "xabikos.JavaScriptSnippets"
+  ]
+}
