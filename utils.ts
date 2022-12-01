@@ -3,11 +3,21 @@ export function parseIntegers(input: string, separator = " ", type = Number) {
 }
 
 export function splitBlocks(input: string) {
-  return input.split("\n\n")
+  return input.split("\n\n").filter(b => b)
 }
 
 export function splitLines(input: string) {
   return input.split("\n")
+}
+
+export function sum(numbers: number[]) {
+  return numbers.reduce((sum, num) => sum + num, 0)
+}
+
+export const sort = {
+  numbers(a: number, b: number) {
+    return a - b
+  },
 }
 
 export type Matrix<T> = T[][]
@@ -22,12 +32,12 @@ export function binary(bitString: (string | number)[]) {
 
 export function* range(begin: number, end: number) {
   for (let i = begin; i <= end; i += 1) {
-    yield i;
+    yield i
   }
 }
 
 export function times(num: number, func: () => void) {
-  [...range(0, num - 1)].forEach(func)
+  ;[...range(0, num - 1)].forEach(func)
 }
 
 export function createMatrix(rawData: string) {
@@ -37,7 +47,7 @@ export function createMatrix(rawData: string) {
   input.push(emptyRow)
 
   const extended = input.map(row => ["X", ...row.split(""), "X"])
-  const matrix = extended.flat().map(cell => cell === "X" ? 99 : Number(cell))
+  const matrix = extended.flat().map(cell => (cell === "X" ? 99 : Number(cell)))
   const cols = extended[0].length
   return { matrix, cols }
 }
@@ -45,12 +55,12 @@ export function createMatrix(rawData: string) {
 export function printMatrix(matrix: number[], cols: number, maxCellLength = 2) {
   const chunks = matrix.reduce((chunks, cell, i) => {
     const ch = Math.floor(i / cols)
-    chunks[ch] = ([] as number[]).concat((chunks[ch] || []), cell)
+    chunks[ch] = ([] as number[]).concat(chunks[ch] || [], cell)
     return chunks
   }, [] as number[][])
   console.log(chunks.map(row => row.map(cell => ("" + cell).padStart(maxCellLength)).join(" ")).join("\n") + "\n")
 }
 
 export function buildObject<T>(arr: (string | number)[][]): Record<string, T> {
-  return Object.assign({}, ...arr.map(([key, val]) => ({[key]: val})))
+  return Object.assign({}, ...arr.map(([key, val]) => ({ [key]: val })))
 }
