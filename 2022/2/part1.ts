@@ -6,7 +6,9 @@ const scoreMap = {
   "C X": 6 + 1, "C Y": 0 + 2, "C Z": 3 + 3,
 }
 
+type Variant = keyof typeof scoreMap
+
 export default function (rawData: string) {
-  const scores = splitLines(rawData).map(line => scoreMap[line])
+  const scores = splitLines(rawData).map(line => scoreMap[line as Variant])
   return sum(scores)
 }
