@@ -7,7 +7,7 @@ export function splitBlocks(input: string) {
 }
 
 export function splitLines(input: string) {
-  return input.split("\n")
+  return input.split("\n").filter(l => l)
 }
 
 export function sum(numbers: number[]) {

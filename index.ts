@@ -32,13 +32,16 @@ async function run(part: number) {
 }
 
 const day = new Date(process.env.DAY || Date.now())
-const dir = resolve(__dirname, "" + day.getFullYear(), "" + day.getDate())
-if (!existsSync(dir)) {
-  mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, "input.txt"), "")
-  writeFileSync(join(dir, "testdata.txt"), "")
-  writeFileSync(join(dir, "part1.ts"), "export default function (rawData: string) {\n  return 0\n}\n")
-  writeFileSync(join(dir, "part2.ts"), "export default function (rawData: string) {\n  return 0\n}\n")
+let dir = ""
+if (day.getDate() < 26 && day.getMonth() === 11) {
+  dir = resolve(__dirname, "" + day.getFullYear(), "" + day.getDate())
+  if (!existsSync(dir)) {
+    mkdirSync(dir, { recursive: true })
+    writeFileSync(join(dir, "input.txt"), "")
+    writeFileSync(join(dir, "testdata.txt"), "")
+    writeFileSync(join(dir, "part1.ts"), "export default function (rawData: string) {\n  return 0\n}\n")
+    writeFileSync(join(dir, "part2.ts"), "export default function (rawData: string) {\n  return 0\n}\n")
+  }
 }
 
 ;(async function () {
