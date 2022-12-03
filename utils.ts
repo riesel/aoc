@@ -14,6 +14,19 @@ export function sum(numbers: number[]) {
   return numbers.reduce((sum, num) => sum + num, 0)
 }
 
+export function unique<T>(lists: T[][]) {
+  return [...new Set(lists)]
+}
+
+export function intersect(arr1: string[], ...others: string[][]) {
+  return arr1.filter(x => others.every(other => other.includes(x)))
+}
+
+export function groupsOf<T>(num: number, items: T) {
+  const groups = Math.ceil(items.length / num)
+  return new Array(groups).fill("").map((_, i) => items.slice(i * num, (i + 1) * num))
+}
+
 export const sort = {
   numbers(a: number, b: number) {
     return a - b
