@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only --clear index.ts",
-    "day": "DAY=2022-12-02 npx ts-node ."
+    "day": "DAY=2022-12-03 npx ts-node ."
   },
   "author": "Joachim Schirrmacher <joachim.schirrmacher@gmail.com>",
   "license": "Apache-2.0",
